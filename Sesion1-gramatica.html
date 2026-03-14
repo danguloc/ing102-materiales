@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ING102 – Sesión 1 | Verbo To Be</title>
+<style>
+  :root {
+    --blue-dark: #003087;
+    --blue-mid: #0055B8;
+    --blue-light: #E8F0FA;
+    --blue-accent: #1A73E8;
+    --green-bg: #EAF5EE;
+    --green-border: #2D8A4E;
+    --green-text: #1A5C32;
+    --red-bg: #FDECEA;
+    --red-border: #C0392B;
+    --red-text: #7B241C;
+    --amber-bg: #FEF9EC;
+    --amber-border: #D4A017;
+    --amber-text: #7D5A0A;
+    --gray-bg: #F7F7F7;
+    --gray-border: #DEDEDE;
+    --text-main: #1A1A2E;
+    --text-muted: #555;
+    --white: #FFFFFF;
+    --radius: 8px;
+    --shadow: 0 2px 8px rgba(0,48,135,0.08);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    color: var(--text-main);
+    background: var(--white);
+    line-height: 1.7;
+    font-size: 16px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 0 60px;
+  }
+
+  /* ── HEADER ───────────────────────────────────────────── */
+  .page-header {
+    background: var(--blue-dark);
+    color: white;
+    padding: 28px 32px 22px;
+    border-radius: 0 0 var(--radius) var(--radius);
+    margin-bottom: 28px;
+  }
+  .page-header .tag {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 8px;
+  }
+  .page-header h1 {
+    font-size: 26px;
+    font-weight: 700;
+    color: white;
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+  .page-header .meta {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    font-size: 13px;
+    color: rgba(255,255,255,0.75);
+  }
+  .page-header .meta span::before {
+    content: "•";
+    margin-right: 6px;
+    opacity: 0.5;
+  }
+  .page-header .meta span:first-child::before { display: none; }
+
+  /* ── LAYOUT ───────────────────────────────────────────── */
+  .content { padding: 0 24px; }
+
+  /* ── SECTION TITLES ──────────────────────────────────── */
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .section-label .num {
+    background: var(--blue-dark);
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .section-label h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--blue-dark);
+    border-bottom: 2px solid var(--blue-dark);
+    padding-bottom: 4px;
+    flex: 1;
+  }
+
+  /* ── BLOCKS ───────────────────────────────────────────── */
+  section { margin-bottom: 36px; }
+
+  .intro-box {
+    background: var(--blue-light);
+    border-left: 4px solid var(--blue-dark);
+    border-radius: var(--radius);
+    padding: 16px 20px;
+    margin-bottom: 24px;
+    font-size: 15px;
+    color: var(--text-main);
+  }
+  .intro-box strong { color: var(--blue-dark); }
+
+  /* ── CONJUGATION TABLE ───────────────────────────────── */
+  .conj-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .conj-card {
+    border: 1.5px solid var(--gray-border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .conj-card .card-head {
+    background: var(--blue-dark);
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    padding: 8px 12px;
+    text-align: center;
+  }
+  .conj-card table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  .conj-card tr:nth-child(even) { background: var(--gray-bg); }
+  .conj-card td {
+    padding: 7px 12px;
+    border-bottom: 0.5px solid var(--gray-border);
+  }
+  .conj-card td:first-child { color: var(--text-muted); font-size: 13px; }
+  .conj-card td:last-child { font-weight: 600; color: var(--blue-mid); }
+
+  /* ── STRUCTURE CARDS ─────────────────────────────────── */
+  .struct-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  @media (max-width: 620px) {
+    .struct-grid, .conj-grid { grid-template-columns: 1fr; }
+  }
+  .struct-card {
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1.5px solid;
+  }
+  .struct-card.affirmative { border-color: var(--green-border); }
+  .struct-card.negative    { border-color: var(--red-border); }
+  .struct-card.question    { border-color: var(--amber-border); }
+
+  .struct-card .card-top {
+    padding: 9px 14px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+  }
+  .affirmative .card-top { background: var(--green-bg); color: var(--green-text); }
+  .negative    .card-top { background: var(--red-bg);   color: var(--red-text); }
+  .question    .card-top { background: var(--amber-bg); color: var(--amber-text); }
+
+  .struct-card .card-body {
+    padding: 12px 14px;
+    background: white;
+    font-size: 13.5px;
+  }
+  .struct-card .formula {
+    font-family: 'Courier New', monospace;
+    background: var(--gray-bg);
+    border-radius: 4px;
+    padding: 6px 10px;
+    font-size: 13px;
+    margin-bottom: 8px;
+    color: var(--text-main);
+    font-weight: 600;
+  }
+  .struct-card .ex {
+    font-style: italic;
+    color: var(--text-muted);
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .struct-card .ex-en { color: var(--blue-mid); font-weight: 500; }
+
+  /* ── EXAMPLE BLOCKS ──────────────────────────────────── */
+  .example-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+
+  .example-item {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 12px;
+    align-items: start;
+    padding: 12px 16px 12px 12px;
+    border-radius: var(--radius);
+    border: 1px solid var(--gray-border);
+    background: var(--gray-bg);
+  }
+  .example-item.affirm { border-left: 4px solid var(--green-border); background: var(--green-bg); }
+  .example-item.neg    { border-left: 4px solid var(--red-border);   background: var(--red-bg); }
+  .example-item.quest  { border-left: 4px solid var(--amber-border); background: var(--amber-bg); }
+
+  .example-item .badge {
+    font-size: 11px; font-weight: 700;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .affirm .badge { background: var(--green-border); color: white; }
+  .neg    .badge { background: var(--red-border);   color: white; }
+  .quest  .badge { background: var(--amber-border); color: white; }
+
+  .example-item .en {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--blue-dark);
+    margin-bottom: 3px;
+  }
+  .example-item .es {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+  .example-item em.hi {
+    font-style: normal;
+    background: rgba(0,48,135,0.12);
+    border-radius: 3px;
+    padding: 1px 4px;
+    color: var(--blue-dark);
+  }
+
+  /* ── CLINICAL CONTEXT ────────────────────────────────── */
+  .clinical-box {
+    background: linear-gradient(135deg, #EAF0FA 0%, #F0F4FB 100%);
+    border: 1.5px solid #B8CDF0;
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    margin-bottom: 20px;
+  }
+  .clinical-box .clinical-tag {
+    font-size: 11px; font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--blue-mid);
+    margin-bottom: 10px;
+  }
+  .clinical-box .dialogue { display: flex; flex-direction: column; gap: 8px; }
+  .dialogue-line {
+    display: flex; gap: 10px; align-items: flex-start;
+  }
+  .dialogue-line .role {
+    font-size: 12px; font-weight: 700;
+    background: var(--blue-dark); color: white;
+    padding: 2px 8px; border-radius: 3px;
+    flex-shrink: 0; margin-top: 2px;
+  }
+  .dialogue-line .role.patient { background: #5A6B8A; }
+  .dialogue-line .speech {
+    font-size: 14px; color: var(--text-main);
+    line-height: 1.5;
+  }
+  .dialogue-line .speech em { color: var(--text-muted); font-style: italic; font-size: 12px; }
+
+  /* ── INTERACTIVE BUILDER ─────────────────────────────── */
+  .builder-box {
+    background: white;
+    border: 2px solid var(--blue-dark);
+    border-radius: var(--radius);
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  .builder-box h3 {
+    font-size: 14px; font-weight: 700;
+    color: var(--blue-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 14px;
+  }
+  .builder-row {
+    display: flex; gap: 8px; align-items: center;
+    flex-wrap: wrap; margin-bottom: 14px;
+  }
+  .builder-row select, .builder-row input[type="text"] {
+    padding: 8px 12px;
+    border: 1.5px solid var(--gray-border);
+    border-radius: var(--radius);
+    font-size: 14px;
+    font-family: inherit;
+    background: var(--gray-bg);
+    color: var(--text-main);
+    min-width: 120px;
+  }
+  .builder-row select:focus, .builder-row input:focus {
+    outline: none;
+    border-color: var(--blue-mid);
+    background: white;
+  }
+  .plus { font-size: 18px; color: var(--text-muted); font-weight: 300; }
+  .builder-btn {
+    padding: 8px 18px;
+    background: var(--blue-dark);
+    color: white;
+    border: none;
+    border-radius: var(--radius);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.15s;
+  }
+  .builder-btn:hover { background: var(--blue-mid); }
+  .builder-output {
+    min-height: 40px;
+    background: var(--blue-light);
+    border-radius: var(--radius);
+    padding: 12px 16px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--blue-dark);
+    display: flex; align-items: center;
+  }
+  .builder-output .es-trans {
+    font-size: 13px; font-weight: 400;
+    color: var(--text-muted); font-style: italic;
+    margin-left: 10px;
+  }
+
+  /* ── SHORT FORMS TABLE ───────────────────────────────── */
+  .shortcuts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  @media (max-width: 520px) { .shortcuts-grid { grid-template-columns: 1fr 1fr; } }
+  .shortcut-item {
+    border: 1px solid var(--gray-border);
+    border-radius: var(--radius);
+    padding: 10px 12px;
+    background: var(--gray-bg);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .shortcut-item .full { font-size: 14px; color: var(--text-muted); }
+  .shortcut-item .arr { font-size: 13px; color: var(--gray-border); }
+  .shortcut-item .short { font-size: 15px; font-weight: 700; color: var(--blue-dark); }
+
+  /* ── PRACTICE SECTION ────────────────────────────────── */
+  .practice-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  @media (max-width: 560px) { .practice-grid { grid-template-columns: 1fr; } }
+  .practice-item {
+    border: 1.5px solid var(--gray-border);
+    border-radius: var(--radius);
+    padding: 14px;
+    background: white;
+  }
+  .practice-item .num {
+    font-size: 11px; font-weight: 700;
+    color: var(--blue-mid);
+    margin-bottom: 4px;
+  }
+  .practice-item .prompt {
+    font-size: 14px;
+    color: var(--text-main);
+    margin-bottom: 8px;
+  }
+  .practice-item .blank {
+    border: none;
+    border-bottom: 2px solid var(--blue-mid);
+    width: 100%;
+    font-size: 14px;
+    font-family: inherit;
+    padding: 4px 0;
+    color: var(--blue-dark);
+    background: transparent;
+    outline: none;
+  }
+  .check-btn {
+    margin-top: 14px;
+    padding: 8px 18px;
+    background: white;
+    color: var(--blue-dark);
+    border: 1.5px solid var(--blue-dark);
+    border-radius: var(--radius);
+    font-size: 13px; font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.15s;
+  }
+  .check-btn:hover { background: var(--blue-light); }
+  .feedback-row {
+    margin-top: 12px;
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .feedback-row.show { display: flex; }
+  .fb-item {
+    font-size: 13px; padding: 6px 10px;
+    border-radius: 4px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .fb-item.correct { background: var(--green-bg); color: var(--green-text); }
+  .fb-item.wrong   { background: var(--red-bg);   color: var(--red-text); }
+
+  /* ── SUMMARY TABLE ───────────────────────────────────── */
+  .summary-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+  .summary-table thead th {
+    background: var(--blue-dark);
+    color: white;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+  }
+  .summary-table tbody tr:nth-child(even) { background: var(--gray-bg); }
+  .summary-table tbody tr:hover { background: var(--blue-light); }
+  .summary-table td {
+    padding: 9px 14px;
+    border-bottom: 1px solid var(--gray-border);
+    vertical-align: top;
+  }
+  .summary-table td.verb-en { font-weight: 700; color: var(--blue-dark); font-size: 15px; }
+  .summary-table td.verb-short { color: var(--blue-mid); font-weight: 600; }
+  .summary-table td.neg { color: var(--red-text); font-weight: 600; }
+  .summary-table td.example-en { font-style: italic; color: var(--text-muted); font-size: 13px; }
+
+  /* ── OBJECTIVES BOX ──────────────────────────────────── */
+  .obj-box {
+    border: 1.5px solid var(--blue-dark);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 28px;
+  }
+  .obj-box .obj-head {
+    background: var(--blue-dark);
+    color: white;
+    padding: 10px 18px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+  }
+  .obj-body { padding: 14px 18px; background: var(--blue-light); }
+  .obj-item {
+    display: flex; gap: 10px;
+    font-size: 14px; color: var(--text-main);
+    margin-bottom: 8px;
+    align-items: flex-start;
+  }
+  .obj-item:last-child { margin-bottom: 0; }
+  .obj-item .dot {
+    width: 8px; height: 8px;
+    background: var(--blue-dark);
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 6px;
+  }
+
+  /* ── FOOTER ──────────────────────────────────────────── */
+  .page-footer {
+    margin-top: 40px;
+    border-top: 2px solid var(--blue-dark);
+    padding: 14px 24px;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 8px;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+  .page-footer strong { color: var(--blue-dark); }
+
+  /* ── DIVIDER ─────────────────────────────────────────── */
+  hr.section-divider {
+    border: none;
+    border-top: 1.5px solid var(--gray-border);
+    margin: 36px 0 28px;
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════
+     HEADER
+════════════════════════════════════════════════════════ -->
+<div class="page-header">
+  <div class="tag">ING102 · Inglés Básico en Enfermería III · Sesión 1</div>
+  <h1>El verbo <em>to be</em> en el contexto clínico</h1>
+  <div class="meta">
+    <span>14 de marzo de 2026</span>
+    <span>Licenciatura en Enfermería · UPAEP</span>
+    <span>Unidad 1: El cuerpo humano y el movimiento</span>
+    <span>Duración magistral: 20 min</span>
+  </div>
+</div>
+
+<div class="content">
+
+<!-- ═══════════════════════════════════════════════════════
+     OBJETIVOS
+════════════════════════════════════════════════════════ -->
+<div class="obj-box">
+  <div class="obj-head">Objetivos de aprendizaje</div>
+  <div class="obj-body">
+    <div class="obj-item"><div class="dot"></div><span>Conjugar el verbo <em>to be</em> en presente simple (I, you, he/she/it, we, they) en sus formas afirmativa, negativa e interrogativa.</span></div>
+    <div class="obj-item"><div class="dot"></div><span>Producir oraciones en inglés para describir partes del cuerpo humano y articulaciones usando <em>to be</em>.</span></div>
+    <div class="obj-item"><div class="dot"></div><span>Reconocer las formas contractas (<em>contractions</em>) de uso frecuente en el lenguaje hablado clínico.</span></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     SECCIÓN 1 — POR QUÉ TO BE
+════════════════════════════════════════════════════════ -->
+<section>
+  <div class="section-label">
+    <div class="num">1</div>
+    <h2>¿Por qué <em>to be</em>?</h2>
+  </div>
+
+  <div class="intro-box">
+    El verbo <strong><em>to be</em></strong> es la estructura gramatical de mayor frecuencia en el inglés clínico elemental. Se usa para identificar, describir ubicación y clasificar. En enfermería lo encontrarás en tres situaciones básicas: <strong>describir al paciente</strong>, <strong>nombrar estructuras anatómicas</strong> y <strong>hacer preguntas de evaluación física</strong>.
+  </div>
+
+  <div class="clinical-box">
+    <div class="clinical-tag">Contexto clínico – Evaluación física inicial</div>
+    <div class="dialogue">
+      <div class="dialogue-line">
+        <div class="role">Nurse</div>
+        <div class="speech">Good morning. <strong>I am</strong> Nurse García. <em>(presentación)</em></div>
+      </div>
+      <div class="dialogue-line">
+        <div class="role">Nurse</div>
+        <div class="speech">The patient <strong>is</strong> a 45-year-old male with knee pain. <em>(descripción)</em></div>
+      </div>
+      <div class="dialogue-line">
+        <div class="role">Nurse</div>
+        <div class="speech"><strong>Is</strong> the pain in your right knee or your left knee? <em>(pregunta de evaluación)</em></div>
+      </div>
+      <div class="dialogue-line">
+        <div class="role patient">Patient</div>
+        <div class="speech">It <strong>is</strong> in my right knee. <em>(respuesta)</em></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     SECCIÓN 2 — CONJUGACIÓN
+════════════════════════════════════════════════════════ -->
+<section>
+  <div class="section-label">
+    <div class="num">2</div>
+    <h2>Conjugación completa — Presente simple</h2>
+  </div>
+
+  <div class="conj-grid">
+    <!-- Afirmativo -->
+    <div class="conj-card">
+      <div class="card-head" style="background:#1A5C32;">Afirmativo</div>
+      <table>
+        <tr><td>I</td><td>am</td></tr>
+        <tr><td>You</td><td>are</td></tr>
+        <tr><td>He / She / It</td><td>is</td></tr>
+        <tr><td>We</td><td>are</td></tr>
+        <tr><td>You (pl)</td><td>are</td></tr>
+        <tr><td>They</td><td>are</td></tr>
+      </table>
+    </div>
+    <!-- Negativo -->
+    <div class="conj-card">
+      <div class="card-head" style="background:#7B241C;">Negativo</div>
+      <table>
+        <tr><td>I</td><td>am not</td></tr>
+        <tr><td>You</td><td>are not</td></tr>
+        <tr><td>He / She / It</td><td>is not</td></tr>
+        <tr><td>We</td><td>are not</td></tr>
+        <tr><td>You (pl)</td><td>are not</td></tr>
+        <tr><td>They</td><td>are not</td></tr>
+      </table>
+    </div>
+    <!-- Interrogativo -->
+    <div class="conj-card">
+      <div class="card-head" style="background:#7D5A0A;">Interrogativo</div>
+      <table>
+        <tr><td>I</td><td>Am I…?</td></tr>
+        <tr><td>You</td><td>Are you…?</td></tr>
+        <tr><td>He / She / It</td><td>Is he/she/it…?</td></tr>
+        <tr><td>We</td><td>Are we…?</td></tr>
+        <tr><td>You (pl)</td><td>Are you…?</td></tr>
+        <tr><td>They</td><td>Are they…?</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <p style="font-size:13px; color:var(--text-muted); margin-bottom:20px;">
+    <strong>Regla clave:</strong> En inglés, el verbo <em>to be</em> no tiene una sola forma para todas las personas — cambia según el sujeto. El error más frecuente en hablantes de español es usar <em>is</em> para todos los casos. Memoriza: <em>I = am · he/she/it = is · todo lo demás = are.</em>
+  </p>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     SECCIÓN 3 — ESTRUCTURAS
+════════════════════════════════════════════════════════ -->
+<section>
+  <div class="section-label">
+    <div class="num">3</div>
+    <h2>Las tres estructuras fundamentales</h2>
+  </div>
+
+  <div class="struct-grid">
+    <div class="struct-card affirmative">
+      <div class="card-top">+ Afirmativo</div>
+      <div class="card-body">
+        <div class="formula">Sujeto + TO BE + Complemento</div>
+        <div class="ex">
+          <span class="ex-en">The knee <em class="hi">is</em> a joint.</span><br>
+          <span style="font-size:12px;">La rodilla es una articulación.</span>
+        </div>
+        <div class="ex" style="margin-top:6px;">
+          <span class="ex-en">The arms <em class="hi">are</em> extremities.</span><br>
+          <span style="font-size:12px;">Los brazos son extremidades.</span>
+        </div>
+      </div>
+    </div>
+    <div class="struct-card negative">
+      <div class="card-top">− Negativo</div>
+      <div class="card-body">
+        <div class="formula">Sujeto + TO BE + NOT + Comp.</div>
+        <div class="ex">
+          <span class="ex-en">The elbow <em class="hi">is not</em> a muscle.</span><br>
+          <span style="font-size:12px;">El codo no es un músculo.</span>
+        </div>
+        <div class="ex" style="margin-top:6px;">
+          <span class="ex-en">The toes <em class="hi">are not</em> joints.</span><br>
+          <span style="font-size:12px;">Los dedos del pie no son articulaciones.</span>
+        </div>
+      </div>
+    </div>
+    <div class="struct-card question">
+      <div class="card-top">? Interrogativo</div>
+      <div class="card-body">
+        <div class="formula">TO BE + Sujeto + Complemento?</div>
+        <div class="ex">
+          <span class="ex-en"><em class="hi">Is</em> the hip a joint?</span><br>
+          <span style="font-size:12px;">¿La cadera es una articulación?</span>
+        </div>
+        <div class="ex" style="margin-top:6px;">
+          <span class="ex-en"><em class="hi">Are</em> the shoulders part of the upper extremity?</span><br>
+          <span style="font-size:12px;">¿Los hombros son parte de la extremidad superior?</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Short answers -->
+  <div class="intro-box" style="margin-top: 0;">
+    <strong>Respuestas cortas (Short answers):</strong> En inglés nunca se responde solo "Yes" o "No" a una pregunta con <em>to be</em> — siempre se añade el pronombre y el verbo.<br><br>
+    <span style="color:var(--green-text); font-weight:600;">Is the knee a joint? → Yes, it <em>is</em>.</span> &nbsp;|&nbsp;
+    <span style="color:var(--red-text); font-weight:600;">Are the ribs joints? → No, they <em>are not</em>.</span>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     SECCIÓN 4 — EJEMPLOS CLÍNICOS
+════════════════════════════════════════════════════════ -->
+<section>
+  <div class="section-label">
+    <div class="num">4</div>
+    <h2>Ejemplos en contexto de enfermería</h2>
+  </div>
+
+  <div class="example-list">
+    <div class="example-item affirm">
+      <div class="badge">+</div>
+      <div>
+        <div class="en">The wrist <em class="hi">is</em> between the hand and the forearm.</div>
+        <div class="es">La muñeca está entre la mano y el antebrazo.</div>
+      </div>
+    </div>
+    <div class="example-item affirm">
+      <div class="badge">+</div>
+      <div>
+        <div class="en">The shoulder <em class="hi">is</em> a joint of the upper extremity.</div>
+        <div class="es">El hombro es una articulación de la extremidad superior.</div>
+      </div>
+    </div>
+    <div class="example-item affirm">
+      <div class="badge">+</div>
+      <div>
+        <div class="en">The hip and the knee <em class="hi">are</em> joints of the lower extremity.</div>
+        <div class="es">La cadera y la rodilla son articulaciones de la extremidad inferior.</div>
+      </div>
+    </div>
+    <div class="example-item neg">
+      <div class="badge">−</div>
+      <div>
+        <div class="en">The elbow <em class="hi">is not</em> a muscle — it <em class="hi">is</em> a joint.</div>
+        <div class="es">El codo no es un músculo — es una articulación.</div>
+      </div>
+    </div>
+    <div class="example-item neg">
+      <div class="badge">−</div>
+      <div>
+        <div class="en">The forearm <em class="hi">is not</em> part of the lower extremity.</div>
+        <div class="es">El antebrazo no es parte de la extremidad inferior.</div>
+      </div>
+    </div>
+    <div class="example-item quest">
+      <div class="badge">?</div>
+      <div>
+        <div class="en"><em class="hi">Is</em> the ankle a joint? — Yes, it <em class="hi">is</em>.</div>
+        <div class="es">¿El tobillo es una articulación? — Sí, lo es.</div>
+      </div>
+    </div>
+    <div class="example-item quest">
+      <div class="badge">?</div>
+      <div>
+        <div class="en"><em class="hi">Is</em> the pain in your right arm? — No, it <em class="hi">is not</em>. It <em class="hi">is</em> in my left arm.</div>
+        <div class="es">¿El dolor está en tu brazo derecho? — No. Está en mi brazo izquierdo.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     SECCIÓN 5 — CONTRACCIONES
+════════════════════════════════════════════════════════ -->
+<section>
+  <div class="section-label">
+    <div class="num">5</div>
+    <h2>Formas contractas (Contractions)</h2>
+  </div>
+
+  <p style="font-size:14px; color:var(--text-muted); margin-bottom:14px;">
+    En el lenguaje hablado y en textos informales, el verbo <em>to be</em> se contrae con el sujeto o con <em>not</em>. Es fundamental reconocerlas para entender instrucciones clínicas orales.
+  </p>
+
+  <div class="shortcuts-grid">
+    <div class="shortcut-item"><span class="full">I am</span><span class="arr">→</span><span class="short">I'm</span></div>
+    <div class="shortcut-item"><span class="full">You are</span><span class="arr">→</span><span class="short">You're</span></div>
+    <div class="shortcut-item"><span class="full">He is</span><span class="arr">→</span><span class="short">He's</span></div>
+    <div class="shortcut-item"><span class="full">She is</span><span class="arr">→</span><span class="short">She's</span></div>
+    <div class="shortcut-item"><span class="full">It is</span><span class="arr">→</span><span class="short">It's</span></div>
+    <div class="shortcut-item"><span class="full">We are</span><span class="arr">→</span><span class="short">We're</span></div>
+    <div class="shortcut-item"><span class="full">They are</span><span class="arr">→</span><span class="short">They're</span></div>
+    <div class="shortcut-item"><span class="full">is not</span><span class="arr">→</span><span class="short">isn't</span></div>
+    <div class="shortcut-item"><span class="full">are not</span><span class="arr">→</span><span class="short">aren't</span></div>
+  </div>
+
+  <div class="intro-box" style="background:var(--amber-bg); border-color:var(--amber-border);">
+    <strong style="color:var(--amber-text);">Nota importante:</strong> <span style="color:var(--text-main);">La contracción <em>it's</em> (it is) es diferente de <em>its</em> (posesivo). En el contexto clínico: <em>It's a joint</em> = Es una articulación. <em>Its location is…</em> = Su ubicación es… Esta distinción aparece frecuentemente en textos médicos en inglés.</span>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     SECCIÓN 6 — CONSTRUCTOR INTERACTIVO
+════════════════════════════════════════════════════════ -->
+<section>
+  <div class="section-label">
+    <div class="num">6</div>
+    <h2>Constructor de oraciones</h2>
+  </div>
+
+  <div class="builder-box">
+    <h3>Construye tu oración paso a paso</h3>
+    <div class="builder-row">
+      <select id="sel-subject">
+        <option value="The knee|La rodilla">The knee</option>
+        <option value="The shoulder|El hombro">The shoulder</option>
+        <option value="The elbow|El codo">The elbow</option>
+        <option value="The wrist|La muñeca">The wrist</option>
+        <option value="The hip|La cadera">The hip</option>
+        <option value="The ankle|El tobillo">The ankle</option>
+        <option value="The hands|Las manos">The hands</option>
+        <option value="The feet|Los pies">The feet</option>
+        <option value="The shoulders and hips|Los hombros y la cadera">The shoulders and hips</option>
+      </select>
+      <select id="sel-verb">
+        <option value="is|es">is</option>
+        <option value="are|son / están">are</option>
+        <option value="is not|no es">is not</option>
+        <option value="are not|no son">are not</option>
+      </select>
+      <select id="sel-complement">
+        <option value="a joint|una articulación">a joint</option>
+        <option value="a muscle|un músculo">a muscle</option>
+        <option value="part of the upper extremity|parte de la extremidad superior">part of the upper extremity</option>
+        <option value="part of the lower extremity|parte de la extremidad inferior">part of the lower extremity</option>
+        <option value="between the hand and the forearm|entre la mano y el antebrazo">between the hand and the forearm</option>
+        <option value="located in the lower leg|ubicado en la parte inferior de la pierna">located in the lower leg</option>
+        <option value="a bone|un hueso">a bone</option>
+        <option value="an extremity|una extremidad">an extremity</option>
+      </select>
+      <button class="builder-btn" onclick="buildSentence()">Construir →</button>
+    </div>
+    <div class="builder-output" id="builder-out">
+      <span style="color:var(--text-muted); font-weight:400; font-size:14px;">Selecciona los elementos y presiona "Construir →"</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     SECCIÓN 7 — PRÁCTICA GUIADA
+════════════════════════════════════════════════════════ -->
+<section>
+  <div class="section-label">
+    <div class="num">7</div>
+    <h2>Práctica guiada — Completa las oraciones</h2>
+  </div>
+
+  <p style="font-size:14px; color:var(--text-muted); margin-bottom:14px;">
+    Escribe la forma correcta de <em>to be</em> en cada espacio. Presiona "Verificar" para revisar tus respuestas.
+  </p>
+
+  <div class="practice-grid">
+    <div class="practice-item">
+      <div class="num">Ejercicio 1</div>
+      <div class="prompt">The knee _____ a joint located between the thigh and the lower leg.</div>
+      <input class="blank" type="text" id="p1" placeholder="to be..." data-answer="is">
+    </div>
+    <div class="practice-item">
+      <div class="num">Ejercicio 2</div>
+      <div class="prompt">The shoulders _____ part of the upper extremity.</div>
+      <input class="blank" type="text" id="p2" placeholder="to be..." data-answer="are">
+    </div>
+    <div class="practice-item">
+      <div class="num">Ejercicio 3</div>
+      <div class="prompt">The elbow _____ not a bone — it _____ a joint.</div>
+      <input class="blank" type="text" id="p3" placeholder="to be (×2, separados por coma)..." data-answer="is,is">
+    </div>
+    <div class="practice-item">
+      <div class="num">Ejercicio 4</div>
+      <div class="prompt">_____ the ankle part of the lower extremity? Yes, it _____.</div>
+      <input class="blank" type="text" id="p4" placeholder="to be (×2, separados por coma)..." data-answer="is,is">
+    </div>
+    <div class="practice-item">
+      <div class="num">Ejercicio 5</div>
+      <div class="prompt">I _____ Nurse Torres. The patient _____ in room 204.</div>
+      <input class="blank" type="text" id="p5" placeholder="to be (×2, separados por coma)..." data-answer="am,is">
+    </div>
+    <div class="practice-item">
+      <div class="num">Ejercicio 6</div>
+      <div class="prompt">The fingers _____ not joints — they _____ part of the hand.</div>
+      <input class="blank" type="text" id="p6" placeholder="to be (×2, separados por coma)..." data-answer="are,are">
+    </div>
+  </div>
+
+  <button class="check-btn" onclick="checkAnswers()">Verificar respuestas</button>
+  <div class="feedback-row" id="feedback"></div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     SECCIÓN 8 — TABLA DE REFERENCIA RÁPIDA
+════════════════════════════════════════════════════════ -->
+<section>
+  <hr class="section-divider">
+  <div class="section-label">
+    <div class="num">8</div>
+    <h2>Tabla de referencia rápida</h2>
+  </div>
+
+  <table class="summary-table">
+    <thead>
+      <tr>
+        <th>Sujeto</th>
+        <th>Afirmativo</th>
+        <th>Contracción</th>
+        <th>Negativo</th>
+        <th>Negación corta</th>
+        <th>Ejemplo clínico</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>I</td>
+        <td class="verb-en">am</td>
+        <td class="verb-short">I'm</td>
+        <td class="neg">am not</td>
+        <td class="neg">—</td>
+        <td class="example-en">I am Nurse García.</td>
+      </tr>
+      <tr>
+        <td>You</td>
+        <td class="verb-en">are</td>
+        <td class="verb-short">You're</td>
+        <td class="neg">are not</td>
+        <td class="neg">aren't</td>
+        <td class="example-en">You are the patient in room 3.</td>
+      </tr>
+      <tr>
+        <td>He / She / It</td>
+        <td class="verb-en">is</td>
+        <td class="verb-short">He's / She's / It's</td>
+        <td class="neg">is not</td>
+        <td class="neg">isn't</td>
+        <td class="example-en">The knee is a joint.</td>
+      </tr>
+      <tr>
+        <td>We</td>
+        <td class="verb-en">are</td>
+        <td class="verb-short">We're</td>
+        <td class="neg">are not</td>
+        <td class="neg">aren't</td>
+        <td class="example-en">We are in the clinical area.</td>
+      </tr>
+      <tr>
+        <td>They</td>
+        <td class="verb-en">are</td>
+        <td class="verb-short">They're</td>
+        <td class="neg">are not</td>
+        <td class="neg">aren't</td>
+        <td class="example-en">The shoulders are joints.</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+</div><!-- /content -->
+
+<!-- ═══════════════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════════════ -->
+<div class="page-footer">
+  <div><strong>ING102 – Inglés Básico en Enfermería III</strong> · Sesión 1 · 14 de marzo de 2026</div>
+  <div>Daniel Angulo Conde · daniel.angulo@upaep.mx · UPAEP Primavera B 2026</div>
+</div>
+
+<script>
+function buildSentence() {
+  const subj = document.getElementById('sel-subject').value.split('|');
+  const verb = document.getElementById('sel-verb').value.split('|');
+  const comp = document.getElementById('sel-complement').value.split('|');
+  const subjEn = subj[0], subjEs = subj[1];
+  const verbEn = verb[0], verbEs = verb[1];
+  const compEn = comp[0], compEs = comp[1];
+  const sentence = subjEn + ' ' + verbEn + ' ' + compEn + '.';
+  const trans = subjEs + ' ' + verbEs + ' ' + compEs + '.';
+  const out = document.getElementById('builder-out');
+  out.innerHTML = '<span>' + sentence + '</span><span class="es-trans">' + trans + '</span>';
+}
+
+function checkAnswers() {
+  const exercises = [
+    { id: 'p1', label: 'Ejercicio 1', answer: 'is',      correct: 'The knee <b>is</b> a joint...' },
+    { id: 'p2', label: 'Ejercicio 2', answer: 'are',     correct: 'The shoulders <b>are</b> part of...' },
+    { id: 'p3', label: 'Ejercicio 3', answer: 'is,is',   correct: 'The elbow <b>is</b> not a bone — it <b>is</b> a joint.' },
+    { id: 'p4', label: 'Ejercicio 4', answer: 'is,is',   correct: '<b>Is</b> the ankle...? Yes, it <b>is</b>.' },
+    { id: 'p5', label: 'Ejercicio 5', answer: 'am,is',   correct: 'I <b>am</b> Nurse Torres. The patient <b>is</b>...' },
+    { id: 'p6', label: 'Ejercicio 6', answer: 'are,are', correct: 'The fingers <b>are</b> not joints — they <b>are</b> part...' },
+  ];
+  const fb = document.getElementById('feedback');
+  fb.innerHTML = '';
+  fb.classList.add('show');
+  exercises.forEach(ex => {
+    const input = document.getElementById(ex.id);
+    const val = input.value.trim().toLowerCase().replace(/\s+/g, '');
+    const expected = ex.answer.toLowerCase().replace(/\s+/g, '');
+    const ok = val === expected;
+    const div = document.createElement('div');
+    div.className = 'fb-item ' + (ok ? 'correct' : 'wrong');
+    div.innerHTML = (ok ? '✓ ' : '✗ ') + '<strong>' + ex.label + ':</strong> ' +
+      (ok ? 'Correcto. ' + ex.correct : 'Incorrecto. Respuesta esperada: ' + ex.correct);
+    fb.appendChild(div);
+    input.style.borderColor = ok ? 'var(--green-border)' : 'var(--red-border)';
+  });
+}
+</script>
+</body>
+</html>
